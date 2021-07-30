@@ -568,15 +568,15 @@ T-type Ca2+ channel activation-H(NaV,NSV,CaV)-->
         <!--Ion current specific to High-Cl(NaV:Voltage-gated Na channel), H(NaV)-->
         <!--I_Nav = g_Nav*d_Nav*f_Nav*(Vm-E_Na);//Ion current specific to Low-Cl-->
         <!--KV (kt) K+ channel activation (generic voltage-activated K+ channel), L(NaV)-->
-        <variable initial_value="-20" name="d_Kv11_Vh" units="voltage_units"/>
-        <variable initial_value="-4.6" name="d_Kv11_S" units="voltage_units"/>
-        <variable initial_value="0.045" name="d_Kv11_tau" units="time_units"/>
-        <variable initial_value="0.01" name="d_Kv11" public_interface="out" units="dimensionless"/>
-        <variable name="d_Kv11_inf" public_interface="out" units="dimensionless"/>
+        <variable initial_value="-20" name="d_kv_Vh" units="voltage_units"/>
+        <variable initial_value="-4.6" name="d_kv_S" units="voltage_units"/>
+        <variable initial_value="0.045" name="d_kv_tau" units="time_units"/>
+        <variable initial_value="0.01" name="d_kv" public_interface="out" units="dimensionless"/>
+        <variable name="d_kv_inf" public_interface="out" units="dimensionless"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
-                <ci>d_Kv11_inf</ci>
+                <ci>d_kv_inf</ci>
                 <apply>
                     <divide/>
                     <cn cellml:units="dimensionless">1</cn>
@@ -590,9 +590,9 @@ T-type Ca2+ channel activation-H(NaV,NSV,CaV)-->
                                 <apply>
                                     <minus/>
                                     <ci>Vm</ci>
-                                    <ci>d_Kv11_Vh</ci>
+                                    <ci>d_kv_Vh</ci>
                                 </apply>
-                                <ci>d_Kv11_S</ci>
+                                <ci>d_kv_S</ci>
                             </apply>
                         </apply>
                     </apply>
@@ -605,37 +605,37 @@ T-type Ca2+ channel activation-H(NaV,NSV,CaV)-->
                     <bvar>
                         <ci>time</ci>
                     </bvar>
-                    <ci>d_Kv11</ci>
+                    <ci>d_kv</ci>
                 </apply>
                 <apply>
                     <divide/>
                     <apply>
                         <minus/>
-                        <ci>d_Kv11_inf</ci>
-                        <ci>d_Kv11</ci>
+                        <ci>d_kv_inf</ci>
+                        <ci>d_kv</ci>
                     </apply>
-                    <ci>d_Kv11_tau</ci>
+                    <ci>d_kv_tau</ci>
                 </apply>
             </apply>
         </math>
         <!--Kv (kt) K+ channel inactivation (generic voltage-dependent K+ channel) , L(NaV)  -->
-        <variable initial_value="-45" name="f_Kv11_Vh" units="voltage_units"/>
-        <variable initial_value="4.4" name="f_Kv11_S" units="voltage_units"/>
-        <variable initial_value="1" name="f_Kv11_a" units="dimensionless"/>
-        <variable initial_value="0.045" name="f_Kv11_tau" units="time_units"/>
-        <variable name="f_Kv11_inf" public_interface="out" units="dimensionless"/>
-        <variable initial_value="1" name="f_Kv11" public_interface="out" units="dimensionless"/>
+        <variable initial_value="-45" name="f_kv_Vh" units="voltage_units"/>
+        <variable initial_value="4.4" name="f_kv_S" units="voltage_units"/>
+        <variable initial_value="1" name="f_kv_a" units="dimensionless"/>
+        <variable initial_value="0.045" name="f_kv_tau" units="time_units"/>
+        <variable name="f_kv_inf" public_interface="out" units="dimensionless"/>
+        <variable initial_value="1" name="f_kv" public_interface="out" units="dimensionless"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
-                <ci>f_Kv11_inf</ci>
+                <ci>f_kv_inf</ci>
                 <apply>
                     <minus/>
                     <apply>
                         <plus/>
                         <apply>
                             <divide/>
-                            <ci>f_Kv11_a</ci>
+                            <ci>f_kv_a</ci>
                             <apply>
                                 <plus/>
                                 <cn cellml:units="dimensionless">1</cn>
@@ -646,16 +646,16 @@ T-type Ca2+ channel activation-H(NaV,NSV,CaV)-->
                                         <apply>
                                             <minus/>
                                             <ci>Vm</ci>
-                                            <ci>f_Kv11_Vh</ci>
+                                            <ci>f_kv_Vh</ci>
                                         </apply>
-                                        <ci>f_Kv11_S</ci>
+                                        <ci>f_kv_S</ci>
                                     </apply>
                                 </apply>
                             </apply>
                         </apply>
                         <cn cellml:units="dimensionless">1</cn>
                     </apply>
-                    <ci>f_Kv11_a</ci>
+                    <ci>f_kv_a</ci>
                 </apply>
             </apply>
             <apply>
@@ -665,30 +665,30 @@ T-type Ca2+ channel activation-H(NaV,NSV,CaV)-->
                     <bvar>
                         <ci>time</ci>
                     </bvar>
-                    <ci>f_Kv11</ci>
+                    <ci>f_kv</ci>
                 </apply>
                 <apply>
                     <divide/>
                     <apply>
                         <minus/>
-                        <ci>f_Kv11_inf</ci>
-                        <ci>f_Kv11</ci>
+                        <ci>f_kv_inf</ci>
+                        <ci>f_kv</ci>
                     </apply>
-                    <ci>f_Kv11_tau</ci>
+                    <ci>f_kv_tau</ci>
                 </apply>
             </apply>
         </math>
-        <variable name="I_Kv11" public_interface="out" units="current_units"/>
-        <variable initial_value="6" name="g_Kv11" units="conductance_units"/>
+        <variable name="I_kv" public_interface="out" units="current_units"/>
+        <variable initial_value="6" name="g_kv" units="conductance_units"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
-                <ci>I_Kv11</ci>
+                <ci>I_kv</ci>
                 <apply>
                     <times/>
-                    <ci>g_Kv11</ci>
-                    <ci>d_Kv11</ci>
-                    <ci>f_Kv11</ci>
+                    <ci>g_kv</ci>
+                    <ci>d_kv</ci>
+                    <ci>f_kv</ci>
                     <apply>
                         <minus/>
                         <ci>Vm</ci>
@@ -926,32 +926,32 @@ T-type Ca2+ channel activation-H(NaV,NSV,CaV)-->
                 <eq/>
                 <ci>f_NSV_inf</ci>
                 <apply>
-                    <plus/>
+                    <minus/>
                     <apply>
-                        <divide/>
-                        <cn cellml:units="dimensionless">0.3</cn>
+                        <plus/>
                         <apply>
-                            <plus/>
-                            <cn cellml:units="dimensionless">1</cn>
+                            <divide/>
+                            <cn cellml:units="dimensionless">0.3</cn>
                             <apply>
-                                <exp/>
+                                <plus/>
+                                <cn cellml:units="dimensionless">1</cn>
                                 <apply>
-                                    <divide/>
+                                    <exp/>
                                     <apply>
-                                        <minus/>
-                                        <ci>Vm</ci>
-                                        <ci>f_NSV_Vh</ci>
+                                        <divide/>
+                                        <apply>
+                                            <minus/>
+                                            <ci>Vm</ci>
+                                            <ci>f_NSV_Vh</ci>
+                                        </apply>
+                                        <ci>f_NSV_S</ci>
                                     </apply>
-                                    <ci>f_NSV_S</ci>
                                 </apply>
                             </apply>
                         </apply>
-                    </apply>
-                    <apply>
-                        <minus/>
                         <cn cellml:units="dimensionless">1</cn>
-                        <cn cellml:units="dimensionless">0.3</cn>
                     </apply>
+                    <cn cellml:units="dimensionless">0.3</cn>
                 </apply>
             </apply>
             <apply>
@@ -1046,8 +1046,8 @@ SOC local Ca-dependent inactivation, which can range from 4 to 8-->
         <variable initial_value="1.0" name="SOCPropCa" units="dimensionless"/>
         <variable initial_value="50" name="nSOC" units="dimensionless"/>
         <variable name="P_SOC" public_interface="out" units="dimensionless"/>
-        <variable name="I_SOC" public_interface="out" units="dimensionless"/>
-        <variable name="J_SOC" public_interface="out" units="dimensionless"/>
+        <variable name="I_SOC" public_interface="out" units="current_units"/>
+        <variable name="J_SOC" public_interface="out" units="micromolar_per_second"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1108,6 +1108,51 @@ SOC local Ca-dependent inactivation, which can range from 4 to 8-->
                 </apply>
             </apply>
         </math>
+        <!--Na+/Ca2+ exchanger-->
+        <variable initial_value="225" name="v_NCX" units="micromolar_per_second"/>
+        <variable name="J_NCX" public_interface="out" units="micromolar_per_second"/>
+        <variable name="I_NCX" public_interface="out" units="current_units"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <ci>J_NCX</ci>
+                <apply>
+                    <divide/>
+                    <apply>
+                        <times/>
+                        <ci>v_NCX</ci>
+                        <ci>Ca_i</ci>
+                    </apply>
+                    <apply>
+                        <plus/>
+                        <cn cellml:units="dimensionless">3.6</cn>
+                        <ci>Ca_i</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>I_NCX</ci>
+                <apply>
+                    <times/>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <ci>z_ca</ci>
+                            <ci>F</ci>
+                            <ci>volCyto</ci>
+                        </apply>
+                        <apply>
+                            <minus/>
+                            <ci>p2m</ci>
+                        </apply>
+                    </apply>
+                    <ci>SOCPropCa</ci>
+                    <ci>J_NCX</ci>
+                </apply>
+            </apply>
+        </math>
         <!--PMCA flux, H(NaV, NSV) and L(NaV)
 Calcium extrusion mechanism-->
         <variable initial_value="50" name="J_PMCA_max" units="micromolar_per_second"/>
@@ -1142,30 +1187,15 @@ Calcium extrusion mechanism-->
                 </apply>
             </apply>
         </math>
-        <variable initial_value="5.0" name="g_Kleak" units="conductance_units"/>
-        <variable initial_value="1" name="g_inleak" units="conductance_units"/>
-        <variable name="I_Kleak" public_interface="out" units="current_units"/>
-        <variable name="I_inleak" public_interface="out" units="current_units"/>
+        <variable initial_value="1" name="g_BNa" units="conductance_units"/>
+        <variable name="I_BNa" public_interface="out" units="current_units"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
-                <ci>I_Kleak</ci>
+                <ci>I_BNa</ci>
                 <apply>
                     <times/>
-                    <ci>g_Kleak</ci>
-                    <apply>
-                        <minus/>
-                        <ci>Vm</ci>
-                        <ci>E_K</ci>
-                    </apply>
-                </apply>
-            </apply>
-            <apply>
-                <eq/>
-                <ci>I_inleak</ci>
-                <apply>
-                    <times/>
-                    <ci>g_inleak</ci>
+                    <ci>g_BNa</ci>
                     <apply>
                         <minus/>
                         <ci>Vm</ci>
@@ -1878,7 +1908,7 @@ for calculating y-->
                     <ci>I_CaT</ci>
                     <ci>I_Nav</ci>
                     <ci>I_BK</ci>
-                    <ci>I_inleak</ci>
+                    <ci>I_BNa</ci>
                 </apply>
             </apply>
         </math>
